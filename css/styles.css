@@ -413,6 +413,49 @@ main {
     border-color: var(--primary);
 }
 
+.price-disclaimer {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: -8px 0 12px;
+    opacity: 0.7;
+}
+
+.price-disclaimer-modal {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: -8px 0 16px;
+    padding: 8px;
+    background: rgba(255, 153, 0, 0.1);
+    border-radius: 6px;
+}
+
+.amazon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #ff9900, #ffb84d);
+    border: none;
+    border-radius: 12px;
+    color: #0a0a0f;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.amazon-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
+}
+
+.amazon-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
 .no-results {
     text-align: center;
     padding: 80px 20px;
@@ -579,28 +622,6 @@ main {
     flex: 1;
 }
 
-.amazon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px 32px;
-    background: linear-gradient(135deg, #ff9900, #ffb84d);
-    border: none;
-    border-radius: 12px;
-    color: #0a0a0f;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.amazon-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
-}
-
 .related-section {
     padding: 40px;
     border-top: 1px solid var(--border);
@@ -675,12 +696,145 @@ footer {
     z-index: 1;
 }
 
+.footer-disclosure {
+    background: rgba(255, 153, 0, 0.1);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.footer-disclosure p {
+    color: #ffb84d;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary);
+}
+
 .footer-text {
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-text a {
     color: var(--primary);
     text-decoration: none;
+}
+
+.footer-copyright {
+    color: var(--text-secondary);
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface-elevated);
+    border-top: 1px solid var(--border);
+    padding: 20px;
+    z-index: 300;
+    display: none;
+}
+
+.cookie-banner.show {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookie-content p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0;
+    flex: 1;
+    min-width: 280px;
+}
+
+.cookie-content a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.cookie-btn {
+    padding: 10px 24px;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cookie-btn:hover {
+    background: var(--primary-hover);
+}
+
+.modal-disclosure {
+    padding: 0 40px 20px;
+    text-align: center;
+}
+
+.modal-disclosure p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin: 0;
+    padding: 12px;
+    background: rgba(255, 153, 0, 0.1);
+    border-radius: 8px;
+}
+
+.modal-disclosure strong {
+    color: #ffb84d;
+}
+
+@media (max-width: 768px) {
+    .modal-disclosure {
+        padding: 0 24px 20px;
+    }
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }

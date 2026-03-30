@@ -2,6 +2,7 @@ let currentCategory = 'all';
 let currentSort = 'featured';
 let searchQuery = '';
 let debounceTimer;
+const AFFILIATE_TAG = 'your affiliate tag here';
 
 function generateStars(rating) {
     let stars = '';
@@ -29,6 +30,12 @@ function formatReviewCount(count) {
         return (count / 1000).toFixed(1) + 'k';
     }
     return count.toString();
+}
+
+function getAffiliateUrl(url) {
+    if (!url || !url.includes('amazon.com')) return url;
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}tag=${AFFILIATE_TAG}`;
 }
 
 function filterAndSortProducts() {
@@ -88,7 +95,8 @@ function renderProducts() {
                     <span class="rating-text">${product.rating} (${formatReviewCount(product.reviewCount)})</span>
                 </div>
                 <div class="product-price">${formatPrice(product.price)}</div>
-                <button class="view-btn">View Deal</button>
+                <p class="price-disclaimer">Price may vary on Amazon</p>
+                <button class="view-btn">Check Price on Amazon</button>
             </div>
         </div>
     `).join('');
@@ -98,6 +106,8 @@ function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
 
+    const affiliateUrl = getAffiliateUrl(product.amazonUrl);
+    
     const modalContent = document.getElementById('modalContent');
     modalContent.innerHTML = `
         <div class="modal-image-container">
@@ -111,9 +121,15 @@ function openProductModal(productId) {
                 <span class="modal-rating-text">${product.rating} out of 5 (${formatReviewCount(product.reviewCount)} reviews)</span>
             </div>
             <div class="modal-price">${formatPrice(product.price)}</div>
+            <p class="price-disclaimer-modal">Price and availability may change. Check Amazon for latest info.</p>
             <p class="modal-description">${product.description}</p>
-            <a href="${product.amazonUrl}" target="_blank" class="amazon-btn">
-                <span>🛒</span> View on Amazon
+            <a href="${affiliateUrl}" target="_blank" rel="nofollow sponsored" class="amazon-btn">
+                <span>View on Amazon</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
             </a>
         </div>
     `;
@@ -202,9 +218,21 @@ function initEventListeners() {
     });
 }
 
+function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookieBanner').classList.remove('show');
+}
+
+function checkCookieConsent() {
+    if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookieBanner').classList.add('show');
+    }
+}
+
 function init() {
     initEventListeners();
     renderProducts();
+    checkCookieConsent();
 }
 
 document.addEventListener('DOMContentLoaded', init);

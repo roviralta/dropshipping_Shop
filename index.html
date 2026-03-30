@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DropZone - Amazon Product Showcase</title>
+    <title>Product Picks - Curated Amazon Recommendations</title>
+    <meta name="description" content="Discover curated product recommendations with honest reviews. Find the best products across Electronics, Home, Fashion, Sports, Beauty, and Toys.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -17,8 +18,8 @@
     <header>
         <div class="header-content">
             <a href="#" class="logo" onclick="resetView(); return false;">
-                <div class="logo-icon">🛒</div>
-                DropZone
+                <div class="logo-icon">★</div>
+                Product Picks
             </a>
             <div class="search-container">
                 <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
@@ -31,7 +32,7 @@
         <div class="container">
             <section class="hero">
                 <h1>Discover Quality Products</h1>
-                <p>Explore curated products from Amazon with honest reviews and ratings</p>
+                <p>Browse curated product recommendations. All products link to Amazon where you can make your purchase.</p>
             </section>
 
             <div class="categories" id="categories">
@@ -68,16 +69,35 @@
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-content" id="modalContent"></div>
+            <div class="modal-disclosure">
+                <p><strong>Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases.</p>
+            </div>
             <div class="related-section">
-                <h3 class="related-title">You May Also Like</h3>
+                <h3 class="related-title">More Products</h3>
                 <div class="related-grid" id="relatedGrid"></div>
             </div>
         </div>
     </div>
 
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</p>
+            <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
-            <p class="footer-text">© 2026 DropZone. All products are from <a href="https://www.amazon.com" target="_blank">Amazon</a>.</p>
+            <div class="footer-disclosure">
+                <p><strong>As an Amazon Associate, we earn from qualifying purchases.</strong></p>
+            </div>
+            <nav class="footer-nav">
+                <a href="disclosure.html">Affiliate Disclosure</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </nav>
+            <p class="footer-text">All products are available on <a href="https://www.amazon.com" target="_blank" rel="nofollow sponsored">Amazon</a>. We do not process orders or handle customer service.</p>
+            <p class="footer-copyright">© 2026 Product Picks. All rights reserved.</p>
         </div>
     </footer>
 
